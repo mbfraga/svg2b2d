@@ -150,21 +150,21 @@ namespace svg2b2d {
 			setCommonVisualProperties(elem);
 		}
 		
-		// Contains styling attributes
-		void applyAttributes(IRender& ctx)
+        // Contains styling attributes
+        void applyAttributes(IRender& ctx)
 		{
 			for (auto& prop : fVisualProperties) {
 				prop.second->draw(ctx);
 			}
-		}
-		
-		virtual void drawSelf(IRender& ctx)
+        }
+
+        virtual void drawSelf(IRender& ctx)
 		{
 			;
 
-		}
-		
-		void draw(IRender& ctx) override
+        }
+
+        void draw(IRender& ctx) override
 		{
 			ctx.save();
 			
@@ -229,9 +229,9 @@ namespace svg2b2d {
 				fWrappedNode = root->findNodeById(fWrappedID);
 			}
 
-		}
+        }
 
-		void drawSelf(IRender& ctx) override
+        void drawSelf(IRender& ctx) override
 		{
 			if (fWrappedNode == nullptr)
 				return;
@@ -291,10 +291,10 @@ namespace svg2b2d {
 		BLPath fPath{};
 		
 		SVGPathBasedShape() :SVGShape() {}
-		SVGPathBasedShape(IMapSVGNodes* iMap) :SVGShape(iMap) {}
-		
-		
-		void drawSelf(IRender &ctx) override
+        SVGPathBasedShape(IMapSVGNodes* iMap) :SVGShape(iMap) {}
+
+
+        void drawSelf(IRender &ctx) override
 		{
 			ctx.fillPath(fPath);
 			ctx.strokePath(fPath);
@@ -598,9 +598,9 @@ namespace svg2b2d {
 			}
 
 			return fVar;
-		}
-		
-		void drawSelf(IRender& ctx)
+        }
+
+        void drawSelf(IRender& ctx)
 		{
 			if (fImage.empty())
 				return;
@@ -699,10 +699,10 @@ namespace svg2b2d {
 			}
 			
 			return fVar;
-		}
-		
-		
-		void drawSelf(IRender& ctx)
+        }
+
+
+        void drawSelf(IRender& ctx)
 		{
 			for (auto& node : fNodes) {
 				node->draw(ctx);
@@ -834,9 +834,9 @@ namespace svg2b2d {
 		std::string fText;
 		
 		SVGTextNode() :SVGCompoundNode() {}
-		SVGTextNode(IMapSVGNodes* root) :SVGCompoundNode(root) {}
+        SVGTextNode(IMapSVGNodes* root) :SVGCompoundNode(root) {}
 
-		void drawSelf(IRender& ctx) override
+        void drawSelf(IRender& ctx) override
 		{
 			//ctx.textFont("Calibri");	// BUGBUG - hardcoded, should go away when property supported
 			//ctx.text(fText.c_str(), x, y+dy);
@@ -927,9 +927,9 @@ namespace svg2b2d {
 			}
 			
 			return fVar;
-		}
-		
-		void drawSelf(IRender& ctx) override
+        }
+
+        void drawSelf(IRender& ctx) override
 		{
 			// This should not be called
 			// a pattern is used as a fill for other visuals
@@ -1421,9 +1421,9 @@ namespace svg2b2d {
 		}
 		
 		double width() { return fWidth; }
-		double height() { return fHeight; }
-		
-		void drawSelf(IRender& ctx)
+        double height() { return fHeight; }
+
+        void drawSelf(IRender& ctx)
 		{
 			if (fViewbox.isSet())
 			{
@@ -1518,9 +1518,9 @@ namespace svg2b2d {
 			node->loadFromIterator(iter);
 
 			return node;
-		}
+        }
 
-		void draw(IRender& ctx) override
+        void draw(IRender& ctx) override
 		{
 			ctx.save();
 
@@ -1577,9 +1577,9 @@ namespace svg2b2d {
 			if (fRootNode == nullptr)
 				return 100;
 			return fRootNode->height();
-		}
+        }
 
-		void draw(IRender& ctx) override
+        void draw(IRender& ctx) override
 		{
 			for (auto& shape : fShapes)
 			{

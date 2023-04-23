@@ -38,12 +38,17 @@ public:
     mDoc = std::move(doc);
   }
 
-  BLImage rasterize() override {
+  BLImage buildImage(double scale) override {
     BLImage img;
 
     if (mDoc)  {
-      img.create(mDoc->width(), mDoc->height(), BL_FORMAT_PRGB32);
+      auto w = static_cast<int>(std::ceil(mDoc->width() * scale));
+      auto h = static_cast<int>(std::ceil(mDoc->height() * scale));
+
+      img.create(w, h, BL_FORMAT_PRGB32);
       SVGRenderer ctx(img);
+      ctx.clearAll();
+      ctx.scale(scale);
       mDoc->draw(ctx);
       ctx.end();
     }
@@ -51,13 +56,21 @@ public:
     return img;
   }
 
+  void draw(BLContext& ctx, double scale) const override {
+    if (mDoc) {
+      auto w = static_cast<int>(std::ceil(mDoc->width() * scale));
+      auto h = static_cast<int>(std::ceil(mDoc->height() * scale));
+      mDoc->draw(ctx);
+    }
+  }
+
 private:
-  std::optional<svg2b2d::SVGDocument> mDoc;
+  mutable std::optional<svg2b2d::SVGDocument> mDoc;
 };
 
 bool parseSVG(const void* bytes, const size_t sz, BLImage& outImage)
 {
-    svg2b2d::ByteSpan inChunk(bytes, sz);   // = svg2b2d::chunk_from_data_size(bytes, sz);
+    svg2b2d::ByteSpan inChunk(bytes, sz);
     
     // Create a new document
     svg2b2d::SVGDocument doc;

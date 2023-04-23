@@ -143,7 +143,7 @@ namespace svg2b2d {
         {
             ;
         }
-
+        
         void draw(IRender& ctx) override
         {
             if (isSet())
@@ -197,8 +197,8 @@ namespace svg2b2d {
         double fValue{ 1.0 };
 
 		SVGOpacity(IMapSVGNodes* iMap):SVGVisualProperty(iMap){}
-
-
+        
+        
         void drawSelf(IRender& ctx)
         {
 			SVGVisualProperty::drawSelf(ctx);
@@ -246,7 +246,7 @@ namespace svg2b2d {
             fValue = rhs.fValue;
             return *this;
         }
-
+        
         void drawSelf(IRender& ctx)
         {
             //ctx.textSize(fValue);
@@ -299,7 +299,7 @@ enum class ALIGNMENT : unsigned
             fValue = rhs.fValue;
             return *this;
         }
-
+        
         void drawSelf(IRender& ctx)
         {
             // BUGBUG, need to calculate alignment
@@ -349,7 +349,7 @@ enum class ALIGNMENT : unsigned
             fValue = rhs.fValue;
             return *this;
         }
-
+        
         void drawSelf(IRender& ctx)
         {
 			// BUGBUG, need to calculate alignment
@@ -772,7 +772,7 @@ namespace svg2b2d {
             fValue = rhs.fValue;
             return *this;
         }
-
+        
         void drawSelf(IRender& ctx)
         {
 			ctx.setFillRule(fValue);
@@ -829,8 +829,8 @@ namespace svg2b2d {
 			fWidth = rhs.fWidth;
 			return *this;
 		}
-
-		void drawSelf(IRender& ctx)
+        
+        void drawSelf(IRender& ctx)
 		{
 			ctx.setStrokeWidth(fWidth);
 		}
@@ -876,8 +876,8 @@ namespace svg2b2d {
 			fMiterLimit = rhs.fMiterLimit;
 			return *this;
         }
-
-		void drawSelf(IRender& ctx)
+        
+        void drawSelf(IRender& ctx)
 		{
 			ctx.setStrokeMiterLimit(fMiterLimit);
 		}
@@ -929,8 +929,8 @@ namespace svg2b2d {
 			fLineCap = rhs.fLineCap;
 			return *this;
 		}
-
-		void drawSelf(IRender& ctx)
+        
+        void drawSelf(IRender& ctx)
 		{
             ctx.setStrokeCaps(fLineCap);
 		}
@@ -1378,7 +1378,7 @@ namespace svg2b2d
             }
 
 		}
-
+        
         void drawSelf(IRender& ctx) override
         {
 			ctx.transform(fTransform);
