@@ -180,7 +180,10 @@ namespace svg2b2d {
 			return dc;
 		}
 
-		static inline ByteSpan& chunk_skip_to_end(ByteSpan& dc) noexcept { dc.fStart = dc.fEnd; }
+		static inline ByteSpan& chunk_skip_to_end(ByteSpan& dc) noexcept { 
+			dc.fStart = dc.fEnd; 
+			return dc;
+		}
 
 
 
