@@ -6,6 +6,7 @@
 
 #include "bspan.h"
 #include "charset.h"
+#include <cmath>
 
 
 
@@ -340,7 +341,7 @@ namespace svg2b2d
 				fracPart = chunk_to_u64(s);
 				auto ending = s.fStart;
 
-				res += (double)fracPart / pow(10.0, (double)(ending - sentinel));
+				res += (double)fracPart / std::pow(10.0, (double)(ending - sentinel));
 				hasFracPart = true;
 			}
 		}
@@ -366,7 +367,7 @@ namespace svg2b2d
 
 			if (digitChars[*s]) {
 				expPart = chunk_to_u64(s);
-				res *= pow(10.0, expSign * (double)expPart);
+				res *= std::pow(10.0, expSign * (double)expPart);
 			}
 		}
 

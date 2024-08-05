@@ -10,6 +10,7 @@
 #include <memory>
 #include <fstream>
 #include <optional>
+#include <cmath>
 
 //using namespace svg2b2d;
 
